@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreQuoteRequest;
+use App\Http\Requests\UpdateQuoteRequest;
 use App\Http\Resources\QuoteResource;
 use App\Models\Quote;
 use Illuminate\Http\Request;
@@ -26,9 +28,10 @@ class QuoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreQuoteRequest $request)
     {
         //
+        return new QuoteResource(Quote::create($request->validated()));
     }
 
     /**
@@ -40,6 +43,7 @@ class QuoteController extends Controller
     public function show(Quote $quote)
     {
         //
+        return new QuoteResource($quote);
     }
 
     /**
@@ -49,9 +53,11 @@ class QuoteController extends Controller
      * @param  \App\Models\Quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quote $quote)
+    public function update(UpdateQuoteRequest $request, Quote $quote)
     {
         //
+        $quote->update($request->validated());
+        return new QuoteResource($quote);
     }
 
     /**
@@ -62,6 +68,7 @@ class QuoteController extends Controller
      */
     public function destroy(Quote $quote)
     {
-        //
+        $quote->delete();
+        return response()->noContent();
     }
 }
