@@ -16,6 +16,7 @@ class QuoteController extends Controller
     public function index()
     {
         //
+        return Quote::all();
     }
 
     /**
