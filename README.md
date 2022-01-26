@@ -1,5 +1,5 @@
 ## Rest API Example Laravel 8 
-Here is example of my REST Api Code using laravel as backend and laravel sanctum as authentication method
+Here is example of my REST Api Code using laravel as backend and laravel sanctum as authentication methocd
 
 ## License
 

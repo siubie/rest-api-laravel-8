@@ -28,11 +28,15 @@ class DemoController extends Controller
 
     public function update(Request $request)
     {
-        return $request->all();
+        $data = [
+            'name' => $request->name . '-updated',
+            'version' => $request->version . '-updated',
+        ];
+        return $data;
     }
 
     public function delete(Request $request)
     {
-        return $request->all();
+        return response()->noContent();
     }
 }
