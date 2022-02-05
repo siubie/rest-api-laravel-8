@@ -28,7 +28,8 @@ Route::post('/bmi', [BmiController::class, 'index']);
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 
+Route::apiResource('quote', QuoteController::class);
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::apiResource('quote', QuoteController::class);
     Route::post('/auth/logout', [AuthController::class, 'logout']);
 });

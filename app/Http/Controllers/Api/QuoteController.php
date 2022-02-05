@@ -19,6 +19,7 @@ class QuoteController extends Controller
     public function index()
     {
         //
+        // return Quote::all();
         return QuoteResource::collection(Quote::all());
     }
 
@@ -30,7 +31,6 @@ class QuoteController extends Controller
      */
     public function store(StoreQuoteRequest $request)
     {
-        //
         return new QuoteResource(Quote::create($request->validated()));
     }
 
